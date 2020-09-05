@@ -18,7 +18,7 @@ class Server {
     constructor() {
         this.#server = http.createServer((request, response) => {
             const filePath = request.url.substr(1);
-            this.#readFile(filePath, response);
+            this.readFile(filePath, response);
         });
 
         this.#server.listen(PORT, () => {
@@ -31,7 +31,7 @@ class Server {
      * @param {String} filePath - полное имя файла
      * @param {String} response - выходной поток
      */
-    #readFile(filePath, response) {
+    readFile(filePath, response) {
         const headParams = {'Content-Type': 'text/plain;charset=utf-8'};
         fs.readFile(filePath, (error, data) => {
             if (error) {
